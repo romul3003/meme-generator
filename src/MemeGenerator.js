@@ -6,7 +6,7 @@ class MemeGenerator extends Component {
 		this.state = {
 			topText: '',
 			bottomText: '',
-			randomImage: 'http://i.imgflip.com/1bij.jpg',
+			randomImg: 'http://i.imgflip.com/1bij.jpg',
 			allMemeImgs: [],
 		}
 		this.handleChange = this.handleChange.bind(this)
@@ -17,7 +17,6 @@ class MemeGenerator extends Component {
 			.then(response => response.json())
 			.then(response => {
 				const {memes} = response.data
-				console.log(memes[0])
 				this.setState({allMemeImgs: memes})
 			})
 
@@ -51,6 +50,12 @@ class MemeGenerator extends Component {
 
 					<button>Gen</button>
 				</form>
+
+				<div className="meme">
+					<img align="center" src={this.state.randomImg} alt="" />
+					<h2 className="top">{this.state.topText}</h2>
+					<h2 className="bottom">{this.state.bottomText}</h2>
+				</div>
 			</div>
 		)
 	}
